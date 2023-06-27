@@ -12,11 +12,24 @@ def getNumbers():
     print("Please enter your 6 integers: ")
     while i < 6:
         i += 1
-        numbers.append(int(input()))
+        while True:
+            numberInput = input(f'Enter #{str(i)}\n')
+
+            if numberInput.isdigit():
+                numberInput = int(numberInput)
+                numbers.append(numberInput)
+                break
+            else:
+                print('NOT A DIGIT')
     
     print("Please enter the Target value: ")
-     
-    target = int(input())
+
+    while True:     
+        targetInput = input("Enter Target #\n")
+        
+        if targetInput.isdigit():
+            target = int(targetInput)
+            break
     
     return(numbers, target)
 
@@ -39,7 +52,7 @@ def checkValues():
     if userResponse == True:
         pass
     if userResponse == False:
-        getNumbers() # This doesnt work
+        
 
 
 
