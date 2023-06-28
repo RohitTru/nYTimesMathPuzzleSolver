@@ -2,6 +2,8 @@
 numbers = []
 target = 0
 validation = 'a'
+userVal = True
+
 def introduction():
     print("Hi and welcome to the NYTIMES' Math Puzzle Solver")
 
@@ -33,26 +35,29 @@ def getNumbers():
     
     return(numbers, target)
 
-def checkValues():
-    userResponse = True
-    
+
+def getCheck():
+    global userVal
+
     print(f'Are your values:  {numbers} and target value: {target} correct? (Enter "y" or "n")')
     
     while True:
-        userResponse = input()
-
-        if userResponse == 'y':
-            userResponse = True
+        userVal = input()        
+        if userVal == 'y':
+            userVal = True
             break
 
-        if userResponse == 'n':
-            userResponse = False
+        if userVal == 'n':
+            userVal = False
             break
+
+    return(userVal)
+
+
+
+
+            
     
-    if userResponse == True:
-        pass
-    if userResponse == False:
-        
 
 
 
@@ -60,7 +65,8 @@ def checkValues():
 def main():
     #introduction()
     getNumbers()
-    checkValues()
+    getCheck()
+    print(userVal)
 
 
 
