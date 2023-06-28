@@ -2,7 +2,7 @@
 numbers = []
 target = 0
 validation = 'a'
-userVal = True
+userVal = False
 
 def introduction():
     print("Hi and welcome to the NYTIMES' Math Puzzle Solver")
@@ -53,6 +53,13 @@ def getCheck():
 
     return(userVal)
 
+def getInput():
+    while userVal == False:
+        getNumbers()
+        getCheck()
+        if userVal == True:
+            break   
+
 
 
 
@@ -63,10 +70,10 @@ def getCheck():
 
 
 def main():
-    #introduction()
-    getNumbers()
-    getCheck()
-    print(userVal)
+    introduction()
+    getInput()
+    
+    
 
 
 
