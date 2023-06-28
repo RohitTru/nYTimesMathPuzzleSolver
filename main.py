@@ -1,4 +1,6 @@
 
+from itertools import permutations
+
 numbers = []
 target = 0
 validation = 'a'
@@ -10,6 +12,7 @@ def introduction():
 def getNumbers():
     i = 0
     global target
+    global numbers
 
     print("Please enter your 6 integers: ")
     while i < 6:
@@ -61,6 +64,12 @@ def getInput():
             break   
 
 
+def solvePuzzle():
+    operators = ['+', '-', '*', '/']
+    perms = list(permutations(numbers))
+    print(perms) 
+
+
 
 
             
@@ -72,6 +81,7 @@ def getInput():
 def main():
     introduction()
     getInput()
+    solvePuzzle()
     
     
 
