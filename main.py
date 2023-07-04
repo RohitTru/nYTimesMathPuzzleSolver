@@ -1,5 +1,5 @@
 
-from itertools import permutations
+from itertools import permutations, product
 
 numbers = []
 target = 0
@@ -66,26 +66,34 @@ def getInput():
 
 def solvePuzzle():
     operators = ['+', '-', '*', '/']
-    perms = list(permutations(numbers))
-    print(perms) 
+    thePermutations = list(permutations(numbers))
 
+    # Our final variable
+    result = None
 
-
-
+    for perm in thePermutations:
+        for ops in product(operators, repeat=(len(numbers)-1)):
+            expression = str(perm[0])
+            for i in range(1, len(numbers)):
+                expression+= ops[i-1] + str(perm[i])
             
-    
-
-
-
-
+            try:
+                if eval(expression) == target:
+                    result = expression
+                    print(result)
+                    break
+            except ZeroDivisionError:
+                pass
+    if result:
+        print("This is the answer " + result + " = " + str(int(eval(expression))))
+    else:
+        print("No expression found.")
+   
 def main():
     introduction()
     getInput()
     solvePuzzle()
     
-    
-
-
 
 if __name__ == "__main__":
     main()
